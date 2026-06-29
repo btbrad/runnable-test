@@ -6,7 +6,7 @@ import { PromptTemplate } from "@langchain/core/prompts";
 import { StringOutputParser } from "@langchain/core/output_parsers";
 
 const COLLECTION_NAME = "ebook_collection";
-const VECTOR_DIM = 1024;
+const VECTOR_DIM = 512;
 
 // 初始化 OpenAI Chat 模型
 const model = new ChatOpenAI({
@@ -26,6 +26,7 @@ const embeddings = new OpenAIEmbeddings({
     baseURL: process.env.OPENAI_BASE_URL,
   },
   dimensions: VECTOR_DIM,
+  encodingFormat: 'float',
 });
 
 // 初始化原生 Milvus 客户端
